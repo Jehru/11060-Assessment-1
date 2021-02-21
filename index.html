@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <style>
+            /* Custom Styles here */
+        </style>
     </head>
     <body>
         <div id="content"></div>
@@ -12,9 +15,9 @@
 
 
             // Api Key and Api URL set as constants
-            // Offset should be how much data it decides to show 
-            const offset = "&offset=200";
-            const apiUrl = "https://data.nma.gov.au/object?collection_id=3708&temporal_date=1980+TO+1990" + offset;
+            // const apiKey = "&apikey=e1l09TYfUkdo9BMpfiUn5oV74IHmBcRe";
+            // const query = ;
+            const apiUrl = "https://bie.ala.org.au/ws/search.json?q=frog" + query ;
 
             // Spit out the url to read where its getting the data from
             console.log(apiUrl);
@@ -24,34 +27,31 @@
         fetch(apiUrl).then(response => {
         //   console.log(response);
           return response.json();
-        }).then(data => {
+        }).then(searchedResults => {
 
-            // This area is where you work with the data
-            console.log(data);
-
+        // This area is where you work with the data
+        // console.log(data);
+        console.log(searchedResults)
 
             //   Create constants to use in the project
-            const collection = data.data[0].collection.title;
+            const searchObject = searchedResults.searchResults;
+            const queryItem = searchObject.queryTitle;
+
+            // These are constants for the name of each item in the array
+            const firstResult = searchObject.results[0].name;
+            const allResults = searchObject.results;
+
 
                 // Add the collection title to the page
-                $('#content').append('<br>' + '<b>' + collection + '</b>');
+                $('#content').append('<br>' + '<b>' + queryItem + '</b>');
 
 
-            const dataArray = data.data;
-            // const plantType = dataArray[x].title; 
-            // Working here the X is the number for each item in the array 
-            // Therefore it needs increase for each item in the the array.
+                // Go through each Item in the array
+                for(let i = 0; i <allResults.length; i++) {
+                    $('#item').append(allResults[i].name + '<br>')
+                    .append(' <img src=' + allResults[i].smallImageUrl + '>');
+                }
 
-                // $('#item').append('<br>' + '<b>' + plantType + '</b>');
-
-
-            const numberResults = data.meta.results;
-                $('#results').append('<br>' + '<p> Number of Results: ' + numberResults);
-
-
-
-
-    
         }).catch(err => {
           // Do something for an error here
           console.log("Error Reading data " + err);
@@ -59,8 +59,11 @@
         </script>
 
         <div id="content"></div>
+
+
         <div id="item"></div>
-        <div id="results"></div>
+    
+        <!-- <div id="results"></div> -->
 
 
     </body>
