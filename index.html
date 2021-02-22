@@ -89,14 +89,19 @@
             for(let i = 0; i <allResults.length; i++) {
                 $('#item')
                 // Adds an image if there is one in the object. This also prints the name out. 
-                .append('<div class="eachItem"><h3>' + allResults[i].name + '</h3> <img src=' + allResults[i].smallImageUrl + ' style="width: 300px"> </div>')
+                .append('<div class="eachItem"><h3>' + allResults[i].name + '</h3> <img src=' + allResults[i].smallImageUrl + ' style="width: 300px"> <p style="display: none">Hello  2</p></div>')
             }
 
             // When the user clicks change the background colour
-            $('.eachItem').click(function() {
-                $(this).css('background-color', '#B22222');
-            });
+            // $('.eachItem').click(function() {
+            //     $(this).css('background-color', '#B22222');
+            // });
             // https://api.jquery.com/click/
+
+            $(".eachItem").click(function() {
+                $(".eachItem p").toggle();
+            });
+            // https://api.jquery.com/toggle/
 
 
 
@@ -112,13 +117,3 @@
 
     </body>
 </html>
-<!-- 
-    EXAMPLES
-
-    https://xingwei726.github.io/Major-Studio-1/Week10_InteractiveProject/test8/#page-1
-
-    https://azuic.github.io/ceramic-rings/
-
-    https://marisaruizasari.github.io/sculptures-of-scale-final/index.html
-
- -->
