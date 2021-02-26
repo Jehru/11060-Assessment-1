@@ -42,6 +42,8 @@
         <!-- My Main Script -->
         <script>
 
+$( document ).ready(function() {
+
         // -----------------------
         // ALA WEB API
         // https://api.ala.org.au/#
@@ -62,25 +64,18 @@
 
 
         // Fetch the api Url then respond with the json information 
-        fetch(apiUrl).then(response => {
-        //   console.log(response);
-          return response.json();
-        }).then(searchedResults => {
+        $.getJSON(apiUrl, function(searchResults) {
 
-            // This area is where you work with the data
-            // console.log(data);
-            console.log(searchedResults);
+            console.log(searchResults);
 
-        //   Create constants to use in the project
-        const searchObject = searchedResults.searchResults;
-        const queryItem = searchObject.queryTitle;
+                const searchObject = searchResults.searchResults;
+                const queryItem = searchObject.queryTitle;
 
-        // These are constants for the name of each item in the array
-        const firstResult = searchObject.results[0].name;
-        const allResults = searchObject.results;
+                // const firstResult = searchResults.results[0].name;
+                const allResults = searchObject.results;
 
 
-            // Add the collection title to the page
+                 // Add the collection title to the page
             $('#heading').append('<h1>' + queryItem + '</h1>')
             .css('textTransform', 'capitalize')
             .append('<h2> Number of Results: ' + searchObject.totalRecords + '</h2>');
@@ -96,23 +91,19 @@
             for(let i = 0; i <allResults.length; i++) {
                 $('#item')
                 // Adds an image if there is one in the object. This also prints the name out. 
-                .append('<div class="eachItem"'+allResults[i].id +'><h3>' + allResults[i].name + '</h3>' + '<img src=' + allResults[i].smallImageUrl + ' style="width: 300px"> <p class="hiddenText" style="display: none">Hello  Test</p></div>');
-            
-            };
+                .append('<div class="eachItem"'+allResults[i].id +'><h3>' + allResults[i].name + '</h3>' + '<img src=' + allResults[i].smallImageUrl + ' style="width: 300px"> <p style="display: none"> Hello  Test</p></div>');
+            }
 
 
-                  // https://api.jquery.com/toggle/
-                // https://api.jquery.com/children/
-                $('.eachItem').click(function() {
+            $(".eachItem").click(function() {
+                $('.eachItem p').toggle();
+            });
+            // https://api.jquery.com/toggle/
 
-                    $(this).find(".hiddenText").toggle();
 
-                });
-
-        }).catch(err => {
-          // Do something for an error here
-          console.log("Error Reading data " + err);
         });
+
+    });
         </script>
 
         <div id="heading"></div>
