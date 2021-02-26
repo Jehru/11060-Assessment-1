@@ -40,9 +40,9 @@
         </script>
 
         <!-- My Main Script -->
-        <script>
 
-$( document ).ready(function() {
+    <script>
+    $( document ).ready(function() {
 
         // -----------------------
         // ALA WEB API
@@ -66,45 +66,56 @@ $( document ).ready(function() {
         // Fetch the api Url then respond with the json information 
         $.getJSON(apiUrl, function(searchResults) {
 
+            // Console the url
             console.log(searchResults);
 
-                const searchObject = searchResults.searchResults;
-                const queryItem = searchObject.queryTitle;
-
+                // Create variables to use in the project 
+                let searchObject = searchResults.searchResults;
+                let queryItem = searchObject.queryTitle;
                 // const firstResult = searchResults.results[0].name;
-                const allResults = searchObject.results;
+                let allResults = searchObject.results;
 
 
-                 // Add the collection title to the page
-            $('#heading').append('<h1>' + queryItem + '</h1>')
-            .css('textTransform', 'capitalize')
-            .append('<h2> Number of Results: ' + searchObject.totalRecords + '</h2>');
-            // https://stackoverflow.com/questions/5122402/uppercase-first-letter-of-variable 
+                // Add the collection title to the page and  add the number of results found
+                // https://stackoverflow.com/questions/5122402/uppercase-first-letter-of-variable 
+
+                $('#heading')
+                .append('<h1>' + queryItem + '</h1>')
+                .css('textTransform', 'capitalize')
+                .append('<h2> Number of Results: ' + searchObject.totalRecords + '</h2>');
 
             
-
-            const frogData = allResults;
-            console.log(allResults);
-
-
-            // Go through each Item in the array
-            for(let i = 0; i <allResults.length; i++) {
-                $('#item')
-                // Adds an image if there is one in the object. This also prints the name out. 
-                .append('<div class="eachItem"'+allResults[i].id +'><h3>' + allResults[i].name + '</h3>' + '<img src=' + allResults[i].smallImageUrl + ' style="width: 300px"> <p style="display: none"> Hello  Test</p></div>');
-            }
+                // create a variable that holds all the searched results 
+                let frogData = allResults;
+                    console.log(allResults);
 
 
-            $(".eachItem").click(function() {
-                $('.eachItem p').toggle();
-            });
-            // https://api.jquery.com/toggle/
+                // For each item that is searched  
+                for(let i = 0; i <allResults.length; i++) {
+
+                    // Adds an image if there is one in the object. This also prints the name out. 
+                    $('#item').append('<div class="eachItem"'+allResults[i].id +'><h3>' + allResults[i].name + '</h3>' + '<img src=' + allResults[i].smallImageUrl + ' style="width: 100%"> <p class="hiddenText" style="display: none"> Author name: <br>' + allResults[i].author +'</p></div>');
+                
+                }
+
+
+                // https://api.jquery.com/toggle/
+                // https://api.jquery.com/find/
+
+                // When the user clicks on the little tile  
+                $(".eachItem").click(function() {
+
+                    // For the item that has been clicked find the item with class hiddentext and show/hide it
+                    $(this).find(".hiddenText").toggle();
+
+                });                
+
 
 
         });
 
     });
-        </script>
+    </script>
 
         <div id="heading"></div>
         <div id="item"></div>

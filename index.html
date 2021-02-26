@@ -87,24 +87,29 @@
             // https://stackoverflow.com/questions/5122402/uppercase-first-letter-of-variable 
 
             
-
+            // This is just an array of 
             const frogData = allResults;
-            console.log(allResults);
+                console.log(allResults);
+
+            const resultsAuthor = allResults.author;
 
 
-            // Go through each Item in the array
+            // Go through each Item in the array of each searched item
             for(let i = 0; i <allResults.length; i++) {
-                $('#item')
-                // Adds an image if there is one in the object. This also prints the name out. 
-                .append('<div class="eachItem"'+allResults[i].id +'><h3>' + allResults[i].name + '</h3>' + '<img src=' + allResults[i].smallImageUrl + ' style="width: 300px"> <p class="hiddenText" style="display: none">Hello  Test</p></div>');
+                
+                // For each item in the array create a little tile (see CSS) tile which shows the name of the frog and the image of the frog
+                $('#item').append('<div class="eachItem"'+allResults[i].id +'><h3>' + allResults[i].name + '</h3>' + '<img src=' + allResults[i].smallImageUrl + 'style="width: 100%"> <p class="hiddenText" style="display: none">' + resultsAuthor + '</p></div>');
             
             };
 
 
-                  // https://api.jquery.com/toggle/
-                // https://api.jquery.com/children/
+                // https://api.jquery.com/toggle/
+                // https://api.jquery.com/find/
+
+                // When the user clicks on the little tile
                 $('.eachItem').click(function() {
 
+                    // For the item that has been clicked find the item with class hiddentext and show/hide it
                     $(this).find(".hiddenText").toggle();
 
                 });
