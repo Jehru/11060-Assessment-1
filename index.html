@@ -40,7 +40,9 @@
         </script>
 
         <!-- My Main Script -->
-        <script>
+
+    <script>
+    $( document ).ready(function() {
 
         // -----------------------
         // ALA WEB API
@@ -62,63 +64,80 @@
 
 
         // Fetch the api Url then respond with the json information 
-        fetch(apiUrl).then(response => {
-        //   console.log(response);
-          return response.json();
-        }).then(searchedResults => {
+        $.getJSON(apiUrl, function(searchResults) {
 
-            // This area is where you work with the data
-            // console.log(data);
-            console.log(searchedResults);
+            // Console the url
+            console.log(searchResults);
 
-        //   Create constants to use in the project
-        const searchObject = searchedResults.searchResults;
-        const queryItem = searchObject.queryTitle;
-
-        // These are constants for the name of each item in the array
-        const firstResult = searchObject.results[0].name;
-        const allResults = searchObject.results;
+                // Create variables to use in the project 
+                let searchObject = searchResults.searchResults;
+                let queryItem = searchObject.queryTitle;
+                // const firstResult = searchResults.results[0].name;
+                let allResults = searchObject.results;
 
 
-            // Add the collection title to the page
-            $('#heading').append('<h1>' + queryItem + '</h1>')
-            .css('textTransform', 'capitalize')
-            .append('<h2> Number of Results: ' + searchObject.totalRecords + '</h2>');
-            // https://stackoverflow.com/questions/5122402/uppercase-first-letter-of-variable 
+                // Add the collection title to the page and  add the number of results found
+                // https://stackoverflow.com/questions/5122402/uppercase-first-letter-of-variable 
+
+                $('#heading')
+                .append('<h1>' + queryItem + '</h1>')
+                .css('textTransform', 'capitalize')
+                .append('<h2> Number of Results: ' + searchObject.totalRecords + '</h2>');
 
             
-            // This is just an array of 
-            const frogData = allResults;
-                console.log(allResults);
-
-            const resultsAuthor = allResults.author;
+                // create a variable that holds all the searched results 
+                let frogData = allResults;
+                    console.log(allResults);
 
 
-            // Go through each Item in the array of each searched item
-            for(let i = 0; i <allResults.length; i++) {
+                // For each item that is searched  
+                for(let i = 0; i <allResults.length; i++) {
+
+                    // Adds an image if there is one in the object. This also prints the name out. 
+                    $('#item').append('<div class="eachItem"'+ allResults[i].id +
+                    '><h3>' + allResults[i].name + '</h3>' + '<img src=' + 
+                    allResults[i].smallImageUrl + ' style="width: 100%; height: 300px;"><div class="noImage"></div> <p class="hiddenText" style="display: none"> Author name: <br>' + 
+                    allResults[i].author +'</p></div>');
                 
-                // For each item in the array create a little tile (see CSS) tile which shows the name of the frog and the image of the frog
-                $('#item').append('<div class="eachItem"'+allResults[i].id +'><h3>' + allResults[i].name + '</h3>' + '<img src=' + allResults[i].smallImageUrl + 'style="width: 100%"> <p class="hiddenText" style="display: none">' + resultsAuthor + '</p></div>');
-            
-            };
+                    // What happens when there is no image found. AKa the broken image url
+                    // https://stackoverflow.com/questions/56166094/update-img-src-if-image-does-not-exist
+
+                    $('.eachItem img').on('error', function() {
+                        this.src = 'https://piotrkowalski.pw/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png';
+                            // https://piotrkowalski.pw/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png
+                        });
+
+                    // If no 
+    
+                }
+
+   
 
 
                 // https://api.jquery.com/toggle/
                 // https://api.jquery.com/find/
 
-                // When the user clicks on the little tile
-                $('.eachItem').click(function() {
+                // When the user clicks on the little tile  
+                $(".eachItem").click(function() {
 
                     // For the item that has been clicked find the item with class hiddentext and show/hide it
                     $(this).find(".hiddenText").toggle();
 
-                });
+                });                
 
-        }).catch(err => {
-          // Do something for an error here
-          console.log("Error Reading data " + err);
+                // $('img').on("error", function() {
+                //         // $(this).append('src', '/assets/images/image.jpg');
+                //         console.log("no image found");
+                //         $('.noImage').append("<p> No image found</p>");
+                //     });
+
+            
+
+
         });
-        </script>
+
+    });
+    </script>
 
         <div id="heading"></div>
         <div id="item"></div>
