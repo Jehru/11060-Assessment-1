@@ -24,7 +24,7 @@
             max-height: 100%;
         }
         
-
+        /* Sets the tile background colour to light grey */
         .eachItem {
             background-color: lightgrey;
         }
@@ -58,7 +58,11 @@
 
             const apiUrl = "https://bie.ala.org.au/ws/search.json?q=frog&pageSize=10"; // Should equal the search item object
 
-            const spatialUrl = "https://biocache-ws.ala.org.au/ws/occurrences/spatial*?q=frog&pageSize=10";
+            // The spatial APi is the one which also includes the data around 
+            const spatialUrl = "https://biocache-ws.ala.org.au/ws/occurrences/search.json*?q=frog&pageSize=100&im=false ";
+            // Sometimes it seems bugged and it doesnt load images, More testing required as to whether the above URL conflicts with the image api
+            // const spatialUrl = "https://biocache-ws.ala.org.au/ws/occurrences/spatial*?q=frog&pageSize=10";
+           
             
             // Read out the url to see where its getting the data from
             console.log(apiUrl);
@@ -106,7 +110,6 @@
 
                     $('.eachItem img').on('error', function() {
                         this.src = 'https://piotrkowalski.pw/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png';
-                            // https://piotrkowalski.pw/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png
                         });
 
                 }
@@ -124,8 +127,8 @@
             
 
             // Geolocation
-                // https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API
-                // Fix up, make it jQuery, such as on click
+            // https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API
+            // Fix up, make it jQuery, such as on click
             function geoFindMe() {
 
                 const status = document.querySelector('#status');
@@ -165,32 +168,40 @@
                         $('#map-link').append("<p>City: " + locatedCity + "</p>")
 
 
-                        // Doesnt YET work as the statePR is a local variable to a different function
-                        // if(locatedCity === statePr){
-                        //     console.log("Yes its the ACT");
-                        // }
-
-
-                                // Spatial Mapping function
+                        // Spatial Mapping function
                         $.getJSON(spatialUrl, function(mapResults) {
                                 
                                 console.log(mapResults);
 
                                 $('#mapTotal').append('<p> Number of user uploads to map: ' + mapResults.totalRecords + '</p>');
 
-                                let mapRecords = mapResults.occurances;
+                                let mapRecords = mapResults.occurrences;
                                 let statePr = mapResults.occurrences[0].stateProvince;
+                                // Number 5 is ACT and works
+                                // let statePr = mapResults.occurrences[5].stateProvince;
 
+                                    console.log(mapRecords);
                                     console.log(locatedCity);
                                     console.log(statePr);
 
-                                if(locatedCity == statePr){
-                                    console.log("Yes its the same state");
-                                    } else {
-                                        console.log("Not the same State")
-                                    }
-                                    
+                                    // For each item that is searched check if its in the ACT
+                                    for(let i = 0; i < mapRecords.length; i++) {
 
+                                        // New Value for located city
+                                        // Australian Capital Territory
+                                        let locatedCity = e.results[0].address_components[3].long_name;
+                            
+                                        // New value for statePr
+                                        // Will change for each result in the array
+                                        let statePr = mapResults.occurrences[i].stateProvince;
+
+                                        if(locatedCity == statePr){
+                                            console.log("Yes its the same state " + mapResults.occurrences[i].vernacularName);
+                                            } else {
+                                                console.log("Not the same State")
+                                            }
+                                            
+                                    }
                             });
 
                     });
@@ -238,3 +249,15 @@
 
     </body>
 </html>
+
+
+<!-- OKAY SPATIAL API SUCKS -->
+
+<!-- THESE ONES MAY BE GOOD -->
+
+<!-- GET /occurrences/coordinates* -->
+<!-- https://biocache-ws.ala.org.au/ws/occurrences/coordinates*?q=frog -->
+<!-- GET /occurrences/search* -->
+<!-- https://biocache-ws.ala.org.au/ws/occurrences/search*?q=frog&im=false -->
+<!-- Get /occurrences/search.json* -->
+<!-- https://biocache-ws.ala.org.au/ws/occurrences/search.json*?q=frog&im=false -->
