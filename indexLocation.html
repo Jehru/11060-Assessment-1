@@ -60,12 +60,12 @@
 
         }
 
-        h1{
+        h1 {
             font-size: 70px;
             font-weight: 700;
         }
 
-        p{
+        p {
             font-size: 16px;
         }
 
@@ -74,10 +74,11 @@
             display: inline;
         }
 
+        /* https://coolors.co/d8f3dc-95d5b2-e0607e */
         .heading1 em{
             font-size: 50px;
             font-weight: 700;
-            color:magenta;
+            color: #E0607E;
         }
 
         /* Buttons */
@@ -88,11 +89,19 @@
             cursor: pointer;
             /* display: inline-block; */
             margin: 15px 30px;
-            background-color: #52b788;
+            background-color: #95d5b2;
         }
 
         #find-me:hover{
             background-color: #2D6A4F;
+            /* color: black; */
+            -webkit-transition: all 0.4s;
+            -moz-transition: all 0.4s;
+            transition: all 0.4s;
+        }
+
+        .eachResult:hover{
+            background-color: #52b788;
             /* color: black; */
             -webkit-transition: all 0.4s;
             -moz-transition: all 0.4s;
@@ -178,18 +187,20 @@ $(document).ready(function() {
                             // Uncomment this for each result in the array
                             console.log(speciesData);
 
-                            var imgSrc = speciesData.searchResults.results[0].imageUrl
-                            
+                            const imgSrc = speciesData.searchResults.results[0].imageUrl
+                            const speciesInfo = speciesData.searchResults
+
                             // console.log(e);
                             // $('#image').append('<img src="' + e + '"> </div>')
-                            
-                            console.log(locationData[i].commonName);
-                            // $('#item').replaceWith('<div id = "item"> <div class = "eachResult"> <b>' + locationData[i].commonName + '</b><br><p>' + locationData[i].name +  
-                            // '<br>' + 'There are ' + locationData[i].count +' found near you</p> <img src="'+ imgSrc +'"></div></div>' );
+                                        
+                            // Removes the default items
                             $('#ifNoItems').remove();
 
-                            $('#item').append('<div class = "eachResult"> <b>' + locationData[i].commonName + '</b><br><p>' + locationData[i].name +  
-                            '<br>' + 'There are ' + locationData[i].count +' found near you</p> <img src="'+ imgSrc +'"></div>' );
+                            $('#item').append('<div class = "eachResult"> <b>' + locationData[i].commonName + '</b><br><p>' +  
+                            '<br>' + 'There are ' + locationData[i].count +' found near you</p> <img src="'+ imgSrc 
+                            +'"> <p class="hiddenText" style="display: none"> Author: '+ speciesInfo.results[0].author + '<br>' +
+                              'Genus: ' + speciesInfo.results[0].genus + '<br>' + 'Name: '+ speciesInfo.results[0].name  +
+                             '<br> Class: '+ speciesInfo.results[0].class +'</p></div>' );
                         
                             // What happens when there is no image found. AKa the broken image url
                             // https://stackoverflow.com/questions/56166094/update-img-src-if-image-does-not-exist
@@ -200,9 +211,6 @@ $(document).ready(function() {
     
                         });
                     }
-
-        
-
                 
                 });
             });
@@ -221,29 +229,33 @@ $(document).ready(function() {
 
     }
 
-    $('#find-me').click(geoFindMe);
-
-
 // Default Action
-
     function defaultAction() {
-        console.log("default");
-
         defaultUrl = "https://bie.ala.org.au/ws/search.json?q=frog&pageSize=3"
 
         $.getJSON(defaultUrl, function(data){
-            console.log(data);
+            console.log(data.searchResults.results);
 
             const defaultFrog = data.searchResults.results;
             // console.log(information);
 
             for(let i = 0; i < defaultFrog.length; i++) {
-                $('#ifNoItems').append('<div class = "eachResult" <p>' + data.searchResults.results[i].name + '</p>' + '<img src="' + data.searchResults.results[i].thumbnailUrl + '"></div>' )
+                $('#ifNoItems').append('<div class = "eachResult"><b>' + data.searchResults.results[i].name + '</b>' + '<img src="' + data.searchResults.results[i].thumbnailUrl 
+                    + '"> <p class="hiddenText" style="display: none"> Common Name: '+ data.searchResults.results[i].commonNameSingle + '</p></div>' )
             }
         })
     }
 
     defaultAction();
+
+    $('#find-me').click(geoFindMe);
+
+    // ON CLICK
+    // https://stackoverflow.com/questions/29372003/click-event-is-not-working-when-data-loads-dynamic-in-jquery
+    $('body').on('click','.eachResult' ,function(e){
+        // console.log(this);
+        $(this).find(".hiddenText").toggle();
+        });
 
 });
 </script>
