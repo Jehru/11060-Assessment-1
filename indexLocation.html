@@ -181,7 +181,8 @@ $(document).ready(function() {
 
                         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI
                         const frogUrl = encodeURI("https://bie.ala.org.au/ws/search.json?q=" + frogName + "&pageSize=5".trim())
-                        // console.log(frogUrl);
+                        console.log("Here");
+                        console.log(frogUrl);
 
                         $.getJSON(frogUrl, function(speciesData){
                             // Uncomment this for each result in the array
