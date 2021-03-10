@@ -212,11 +212,13 @@ $(document).ready(function() {
     
                         });
                     }
-                
                 });
+
+                
             });
 
         }
+
         function error() {
             status.textContent = 'Unable to retrieve your location';
         }
@@ -247,6 +249,7 @@ $(document).ready(function() {
         })
     }
 
+    // Run the default action on page load
     defaultAction();
 
     $('#find-me').click(geoFindMe);
@@ -256,7 +259,8 @@ $(document).ready(function() {
     $('body').on('click','.eachResult' ,function(e){
         // console.log(this);
         $(this).find(".hiddenText").toggle();
-        });
+        playSound();
+    });
 
 });
 </script>
