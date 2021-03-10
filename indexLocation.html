@@ -126,7 +126,7 @@ $(document).ready(function() {
 
             // Api Call 
         const spatialUrl = "https://biocache-ws.ala.org.au/ws/occurrences/search.json*?q=frog&pageSize=150&im=false ";
-        console.log(spatialUrl);
+        // console.log(spatialUrl);
 
         const status = document.querySelector('#status');
         const mapLink = document.querySelector('#map-link');
@@ -145,15 +145,15 @@ $(document).ready(function() {
             status.textContent = '';
             // mapLink.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
             // mapLink.textContent = `Latitude: ${latitude.toFixed(2)} °, Longitude: ${longitude.toFixed(2)} °`;
-            console.log("Latitude: " + latitude);
-            console.log("Longitude: " + longitude)    
+            // console.log("Latitude: " + latitude);
+            // console.log("Longitude: " + longitude)    
 
             // Google Cloud development Key and Reverse Geolocation Api 
             const gDevApiKey = "AIzaSyBXbTrT4c4Fw_n7gAzh1UQ3PrUO8yEyjmQ";
             const gDevMapUrl = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latitude + "," + longitude +"&key=" + gDevApiKey;
 
             // Spit out URL for easy IDentification of data
-            console.log(gDevMapUrl);   
+            // console.log(gDevMapUrl);   
 
             // Get the data from the Google development Url, which will give us the name of the city which currently in 
             $.getJSON(gDevMapUrl, function(e) {
@@ -172,7 +172,7 @@ $(document).ready(function() {
                 // console.log(locationUrl);
 
                 $.getJSON(locationUrl, function(locationData){
-                    console.log(locationData);
+                    // console.log(locationData);
 
                     // For Each in Array
                     for(let i = 0; i <locationData.length; i++) {
@@ -181,36 +181,36 @@ $(document).ready(function() {
 
                         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI
                         const frogUrl = encodeURI("https://bie.ala.org.au/ws/search.json?q=" + frogName + "&pageSize=5".trim())
-                        console.log("Here");
-                        console.log(frogUrl);
+                        // console.log("Here");
+                        // console.log(frogUrl);
 
-                        $.getJSON(frogUrl, function(speciesData){
-                            // Uncomment this for each result in the array
-                            console.log(speciesData);
+                            $.getJSON(frogUrl, function(speciesData){
+                                // Uncomment this for each result in the array
+                                // console.log(speciesData);
 
-                            const imgSrc = speciesData.searchResults.results[0].imageUrl
-                            const speciesInfo = speciesData.searchResults
+                                const imgSrc = speciesData.searchResults.results[0].imageUrl
+                                const speciesInfo = speciesData.searchResults
 
-                            // console.log(e);
-                            // $('#image').append('<img src="' + e + '"> </div>')
-                                        
-                            // Removes the default items
-                            $('#ifNoItems').remove();
+                                // console.log(e);
+                                // $('#image').append('<img src="' + e + '"> </div>')
+                                            
+                                // Removes the default items
+                                $('#ifNoItems').remove();
 
-                            $('#item').append('<div class = "eachResult"> <b>' + locationData[i].commonName + '</b><br><p>' +  
-                            '<br>' + 'There are ' + locationData[i].count +' found near you</p> <img src="'+ imgSrc 
-                            +'"> <p class="hiddenText" style="display: none"> Author: '+ speciesInfo.results[0].author + '<br>' +
-                              'Genus: ' + speciesInfo.results[0].genus + '<br>' + 'Name: '+ speciesInfo.results[0].name  +
-                             '<br> Class: '+ speciesInfo.results[0].class +'</p></div>' );
-                        
-                            // What happens when there is no image found. AKa the broken image url
-                            // https://stackoverflow.com/questions/56166094/update-img-src-if-image-does-not-exist
-                            $('#item img').on('error', function() {
-                                this.src = 'https://piotrkowalski.pw/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png';
-                                });
+                                $('#item').append('<div class = "eachResult"> <b>' + locationData[i].commonName + '</b><br><p>' +  
+                                '<br>' + 'There are ' + locationData[i].count +' found near you</p> <img src="'+ imgSrc 
+                                +'"> <p class="hiddenText" style="display: none"> Author: '+ speciesInfo.results[0].author + '<br>' +
+                                'Genus: ' + speciesInfo.results[0].genus + '<br>' + 'Name: '+ speciesInfo.results[0].name  +
+                                '<br> Class: '+ speciesInfo.results[0].class +'</p></div>' );
+                            
+                                // What happens when there is no image found. AKa the broken image url
+                                // https://stackoverflow.com/questions/56166094/update-img-src-if-image-does-not-exist
+                                $('#item img').on('error', function() {
+                                    this.src = 'https://piotrkowalski.pw/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png';
+                                    });
 
     
-                        });
+                            });
                     }
                 });
 
@@ -237,7 +237,7 @@ $(document).ready(function() {
         defaultUrl = "https://bie.ala.org.au/ws/search.json?q=frog&pageSize=3"
 
         $.getJSON(defaultUrl, function(data){
-            console.log(data.searchResults.results);
+            // console.log(data.searchResults.results);
 
             const defaultFrog = data.searchResults.results;
             // console.log(information);
@@ -256,11 +256,43 @@ $(document).ready(function() {
 
     // ON CLICK
     // https://stackoverflow.com/questions/29372003/click-event-is-not-working-when-data-loads-dynamic-in-jquery
-    $('body').on('click','.eachResult' ,function(e){
+    $('body').on('click','.eachResult' ,function(){
         // console.log(this);
         $(this).find(".hiddenText").toggle();
         playSound();
     });
+
+    function playSound(){
+        console.log("Hello");
+
+        freeSoundApiKey = "EemkNYmh7W3vbprhO01dlckDAm1p0CxVsWJiq8MA"
+         const freeSoundUrl = "https://freesound.org/apiv2/search/text/?format=json&query=Common%20Froglet&token=" + freeSoundApiKey;
+
+        //  console.log(freeSoundUrl);
+
+        $.getJSON(freeSoundUrl, function(newData){
+
+            const frogCroakId = newData.results[0].id
+            console.log(frogCroakId);
+
+
+            const frogCroakSound = "https://freesound.org/apiv2/sounds/" + frogCroakId + "/?format=json&token=" + freeSoundApiKey;
+
+                $.getJSON(frogCroakSound, function(e){
+                    console.log(e);
+                    console.log(e.previews["preview-hq-ogg"])
+
+                    const audioClip = e.previews["preview-hq-ogg"]
+
+                    $('#item').append(' <audio id="myAudio"><source src="'+ audioClip +'" type="audio/ogg">'+ 
+                        'Your browser does not support the audio element. </audio>').play();                    
+                
+           
+                });
+
+        });
+
+    }
 
 });
 </script>
