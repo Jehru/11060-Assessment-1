@@ -270,7 +270,8 @@ $(document).ready(function() {
     $('body').on('click','.eachResult' ,function(){
         // console.log(this);
         $(this).find(".hiddenText").toggle();
-        // playSound().play();
+        playSound();
+        // audioClip.play();
     });
 
     //-----------
@@ -283,15 +284,15 @@ $(document).ready(function() {
         const freeSoundApiKey = "EemkNYmh7W3vbprhO01dlckDAm1p0CxVsWJiq8MA"
         const freeSoundUrl = "https://freesound.org/apiv2/search/text/?format=json&query="+ frogA +"&token=" + freeSoundApiKey;
 
-            console.log(freeSoundUrl);
+            // console.log(freeSoundUrl);
 
         $.getJSON(freeSoundUrl, function(newData){
 
             const frogCroakId = newData.results[0].id
-            console.log(newData);
+            // console.log(newData);
             // console.log(frogCroakId);
 
-            
+
             const frogCroakSound = "https://freesound.org/apiv2/sounds/" + frogCroakId + "/?format=json&token=" + freeSoundApiKey;
 
                 $.getJSON(frogCroakSound, function(e){
@@ -300,7 +301,7 @@ $(document).ready(function() {
 
                     const audioClip = e.previews["preview-hq-ogg"]
 
-                    $('#item').append(' <audio id="my_Audio"><source src="'+ audioClip +'" type="audio/ogg">'+ 
+                    $('#item').append(' <audio id="my_Audio" controls><source src="'+ audioClip +'" type="audio/ogg">'+ 
                         'Your browser does not support the audio element. </audio>');     
 
                 });
