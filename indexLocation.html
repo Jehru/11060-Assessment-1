@@ -3,7 +3,15 @@
 <head>
 
     <!-- Links bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous"> -->
+
+    <!-- UIKit Framework -->
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.18/dist/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.18/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.18/dist/js/uikit-icons.min.js"></script>
 
     <style>
         /* Custom Styles here */
@@ -28,10 +36,10 @@
         color: #081C15;
         }
         
-        #item{
+        /* #item{
             display: grid;
             grid-template-columns: repeat(4, auto);
-        }
+        } */
 
         #ifNoItems {
             display: grid;
@@ -56,7 +64,7 @@
             /* margin: auto;
             width: 50%; */
             text-align: center;
-            margin: 100px 0 70px 0;
+            padding: 100px 0 70px 0;
 
         }
 
@@ -212,16 +220,17 @@ $(document).ready(function() {
 
                                 console.log(soundFileUrl);
 
-                                $('#item').append('<div class = "eachResult"> <b>' + locationData[i].commonName + '</b><br><p>' +  
+                                $('.uk-grid-medium').append('<div><div class = "uk-card uk-card-default uk-card-body"> <b>' 
+                                + locationData[i].commonName + '</b><br><p>' +  
                                 '<br>' + 'There are ' + locationData[i].count +' found near you</p> <img src="'+ imgSrc 
                                 +'"> <p class="hiddenText" style="display: none"> Author: '+ speciesInfo.results[0].author + '<br>' +
                                 'Genus: ' + speciesInfo.results[0].genus + '<br>' + 'Name: '+ speciesInfo.results[0].name  +
                                 '<br> Class: '+ speciesInfo.results[0].class +'</p>' +
-                                '<div class="audio" style="display:none"><audio controls source src="' + soundFileUrl + '" ></audio></div></div>' );
+                                '<div class="audio" style="display:none"><audio controls source src="' + soundFileUrl + '" ></audio></div></div></div>' );
                             
                                 // What happens when there is no image found. AKa the broken image url
                                 // https://stackoverflow.com/questions/56166094/update-img-src-if-image-does-not-exist
-                                $('#item img').on('error', function() {
+                                $('.uk-grid-medium img').on('error', function() {
                                     this.src = 'https://piotrkowalski.pw/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png';
                                     });
                                 
@@ -280,12 +289,11 @@ $(document).ready(function() {
 
     // ON CLICK
     // https://stackoverflow.com/questions/29372003/click-event-is-not-working-when-data-loads-dynamic-in-jquery
-    $('body').on('click','.eachResult' ,function(){
+    $('body').on('click','.uk-card' ,function(){
         // console.log(this);
         $(this).find(".hiddenText").toggle();        
         $(this).find(".audio").toggle();
 
-        // playSound().play();
     });
 
     //-----------
@@ -344,7 +352,7 @@ $(document).ready(function() {
         <div id = "frogLocated"></div>
     </div>
 
-    <div id = "item"></div>
+    <div class = "uk-grid-medium uk-child-width-1-3@m uk-text-center" uk-grid></div>
 
     <div id = "ifNoItems"></div>
        
