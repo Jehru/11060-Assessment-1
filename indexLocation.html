@@ -150,8 +150,7 @@ $(document).ready(function() {
             // const longitude = 149.0843;
 
             status.textContent = '';
-            // mapLink.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
-            // mapLink.textContent = `Latitude: ${latitude.toFixed(2)} °, Longitude: ${longitude.toFixed(2)} °`;
+
             // console.log("Latitude: " + latitude);
             // console.log("Longitude: " + longitude)    
 
@@ -179,7 +178,7 @@ $(document).ready(function() {
                 // console.log(locationUrl);
 
                 $.getJSON(locationUrl, function(locationData){
-                    console.log(locationData);
+                    // console.log(locationData);
 
                     // For Each in Array
                     for(let i = 0; i <locationData.length; i++) {
@@ -204,22 +203,36 @@ $(document).ready(function() {
                                 // Removes the default items
                                 $('#ifNoItems').remove();
 
+                                // getFreeSoundApi(frogName);
+                                // console.log(frogName);
+
+                                const linkId = speciesData.searchResults.results[0].linkIdentifier
+
+                                var soundFileUrl= "https://amphibiaweb.org/sounds/" + linkId + ".wav"
+
+                                console.log(soundFileUrl);
+
                                 $('#item').append('<div class = "eachResult"> <b>' + locationData[i].commonName + '</b><br><p>' +  
                                 '<br>' + 'There are ' + locationData[i].count +' found near you</p> <img src="'+ imgSrc 
                                 +'"> <p class="hiddenText" style="display: none"> Author: '+ speciesInfo.results[0].author + '<br>' +
                                 'Genus: ' + speciesInfo.results[0].genus + '<br>' + 'Name: '+ speciesInfo.results[0].name  +
-                                '<br> Class: '+ speciesInfo.results[0].class +'</p></div>' );
+                                '<br> Class: '+ speciesInfo.results[0].class +'</p>' +
+                                '<div class="audio" style="display:none"><audio controls source src="' + soundFileUrl + '" ></audio></div></div>' );
                             
                                 // What happens when there is no image found. AKa the broken image url
                                 // https://stackoverflow.com/questions/56166094/update-img-src-if-image-does-not-exist
                                 $('#item img').on('error', function() {
                                     this.src = 'https://piotrkowalski.pw/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png';
                                     });
+                                
+                                $("#audio audio").on("error", function(e) {
+                                    console.log("audio not found");
+                                    alert("Error at audio tag level!");
+                                });
 
-    
                             });
 
-                            getSounds(frogName);
+                            // getSounds(frogName);
                             
                     }
 
@@ -269,7 +282,9 @@ $(document).ready(function() {
     // https://stackoverflow.com/questions/29372003/click-event-is-not-working-when-data-loads-dynamic-in-jquery
     $('body').on('click','.eachResult' ,function(){
         // console.log(this);
-        $(this).find(".hiddenText").toggle();
+        $(this).find(".hiddenText").toggle();        
+        $(this).find(".audio").toggle();
+
         // playSound().play();
     });
 
@@ -277,11 +292,12 @@ $(document).ready(function() {
     // TESTING
     // -----------
 
+    /*
     function getSounds(frogA){
         console.log(frogA);
 
         const freeSoundApiKey = "EemkNYmh7W3vbprhO01dlckDAm1p0CxVsWJiq8MA"
-        const freeSoundUrl = "https://freesound.org/apiv2/search/text/?format=json&query="+ frogA +"&token=" + freeSoundApiKey;
+        const freeSoundUrl = encodeURI("https://freesound.org/apiv2/search/text/?format=json&query="+ frogA +"&token=" + freeSoundApiKey);
 
             console.log(freeSoundUrl);
 
@@ -295,7 +311,7 @@ $(document).ready(function() {
             const frogCroakSound = "https://freesound.org/apiv2/sounds/" + frogCroakId + "/?format=json&token=" + freeSoundApiKey;
 
                 $.getJSON(frogCroakSound, function(e){
-                    // console.log(e);
+                    console.log(e);
                     // console.log(e.previews["preview-hq-ogg"])
 
                     const audioClip = e.previews["preview-hq-ogg"]
@@ -308,9 +324,8 @@ $(document).ready(function() {
         });
 
     }
+*/
 
-
-        
 
 });
 </script>
