@@ -124,6 +124,13 @@
             width: 100%;
         }
 
+        .uk-card-default.uk-card-hover:hover {
+            background-color: #EEEEEE;
+            -webkit-transition: all 0.4s;
+            -moz-transition: all 0.4s;
+            transition: all 0.4s;
+        }
+
     </style>
 </head>
 <body>
@@ -223,7 +230,7 @@
                                     // Main append
                                     // Appends each frog item to the page includes the name, amount of frogs near the user
                                     // There is hidden information that is shown when the user clicks on the card
-                                    $('.uk-grid-medium').append('<div><div class = "uk-card uk-card-default uk-card-body"> <b>' 
+                                    $('.uk-grid-medium').append('<div><div class = "uk-card uk-card-default uk-card-body uk-card-hover"> <b>' 
                                     + locationData[i].commonName + '</b><br><p>' +  
                                     '<br>' + 'There are ' + locationData[i].count +' recordings near you</p> <img src="'+ imgSrc 
                                     +'"> <p class="hiddenText" style="display: none"> Author: '+ speciesInfo.results[0].author + '<br>' +
@@ -292,7 +299,7 @@
                 for(let i = 0; i < defaultFrog.length; i++) {
                     // Append each of these frogs to the webpage
                     // include the name, image and hide the common name 
-                    $('#ifNoItems').append('<div><div class = "uk-card uk-card-default uk-card-body"><b>' + defaultFrog[i].name + '</b><br><br>' + '<img src="' + defaultFrog[i].imageUrl 
+                    $('#ifNoItems').append('<div><div class = "uk-card uk-card-default uk-card-body uk-card-hover"><b>' + defaultFrog[i].name + '</b><br><br>' + '<img src="' + defaultFrog[i].imageUrl 
                         + '"> <p class="hiddenText" style="display: none"> Common Name: '+ defaultFrog[i].commonNameSingle + '</p></div></div>' )
                 }
             })
