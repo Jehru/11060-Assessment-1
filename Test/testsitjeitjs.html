@@ -1,0 +1,34 @@
+<!DOCTYPE html> 
+<html> 
+  
+<body> 
+            
+    <button onclick="my_Audio()" type="button"> 
+        Change Audio 
+    </button> 
+    <br> 
+  
+    <audio id="my_Audio" controls autoplay> 
+        <source id="mp4_src" src= 
+"https://media.geeksforgeeks.org/wp-content/uploads/20190531165842/Recording1514.ogg"
+                    type="audio/mp3"> 
+  
+        <source id="ogg_src" src= 
+"https://media.geeksforgeeks.org/wp-content/uploads/20190625153922/frog.mp3"
+                    type="audio/ogg"> 
+    </audio> 
+  
+    <script> 
+        function my_Audio() { 
+            document.getElementById("ogg_src").src = 
+"https://media.geeksforgeeks.org/wp-content/uploads/20190531165842/Recording1514.ogg"; 
+          
+            document.getElementById("mp4_src").src = 
+"https://media.geeksforgeeks.org/wp-content/uploads/20190625153922/frog.mp3"; 
+  
+            document.getElementById("my_Audio").load(); 
+        } 
+    </script> 
+</body> 
+  
+</html> 

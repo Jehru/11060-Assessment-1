@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            /* Custom Styles here */
+
+            /* Sets Sanserif font for whole page. Serifs are Yuk */
+            body {
+            font-family: "Roboto", sans-serif;
+            font-size: 17px; 
+            }
+
+            /* https://stackoverflow.com/questions/52472667/how-to-display-image-in-css-grid/52473643 */
+            /* CSS grid */
+            #item {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-column-gap: 25px;
+                grid-row-gap: 25px;
+            }
+
+            #item > div img {
+                max-width: 100%;
+                max-height: 100%;
+            }
+            
+
+        .eachItem {
+            background-color: lightgrey;
+        }
+
+        </style>
+    </head>
+    <body>
+        <!-- Finds CDN Scripts such as Jquery -->
+        <script
+            src="https://code.jquery.com/jquery-3.5.1.min.js"
+            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+            crossorigin="anonymous">
+        </script>
+
+        <!-- My Main Script -->
+        <script>
+
+        // -----------------------
+        // ALA WEB API
+        // https://api.ala.org.au/#
+        // -----------------------
+        // EXAMPLES
+        // https://biocache-ws.ala.org.au/ws/occurrences/search?fq=occurrence_decade_i:%222020%22&q=genus:%22Macropus%22
+        // https://bie.ala.org.au/ws/search.json?q=frog
+        // https://collections.ala.org.au/ws/dataResource
+
+            // Api Key and Api URL set as constants
+            // const apiKey = "&apikey=e1l09TYfUkdo9BMpfiUn5oV74IHmBcRe";
+            // const query = ;
+
+            const apiUrl = "https://bie.ala.org.au/ws/search.json?q=frog&pageSize=40"; // Should equal the search item object
+
+            // Read out the url to see where its getting the data from
+            console.log(apiUrl);
+
+
+        // Fetch the api Url then respond with the json information 
+        fetch(apiUrl).then(response => {
+        //   console.log(response);
+          return response.json();
+        }).then(searchedResults => {
+
+            // This area is where you work with the data
+            // console.log(data);
+            console.log(searchedResults);
+
+        //   Create constants to use in the project
+        const searchObject = searchedResults.searchResults;
+        const queryItem = searchObject.queryTitle;
+
+        // These are constants for the name of each item in the array
+        const firstResult = searchObject.results[0].name;
+        const allResults = searchObject.results;
+
+
+            // Add the collection title to the page
+            $('#heading').append('<h1>' + queryItem + '</h1>')
+            .css('textTransform', 'capitalize')
+            .append('<h2> Number of Results: ' + searchObject.totalRecords + '</h2>');
+            // https://stackoverflow.com/questions/5122402/uppercase-first-letter-of-variable 
+
+            
+            // This is just an array of 
+            const frogData = allResults;
+                console.log(allResults);
+
+            const resultsAuthor = allResults.author;
+
+
+            // Go through each Item in the array of each searched item
+            for(let i = 0; i <allResults.length; i++) {
+                
+                // For each item in the array create a little tile (see CSS) tile which shows the name of the frog and the image of the frog
+                $('#item').append('<div class="eachItem"'+allResults[i].id +'><h3>' + allResults[i].name + '</h3>' + '<img src=' + allResults[i].smallImageUrl + 'style="width: 100%"> <p class="hiddenText" style="display: none">' + resultsAuthor + '</p></div>');
+            
+            };
+
+
+                // https://api.jquery.com/toggle/
+                // https://api.jquery.com/find/
+
+                // When the user clicks on the little tile
+                $('.eachItem').click(function() {
+
+                    // For the item that has been clicked find the item with class hiddentext and show/hide it
+                    $(this).find(".hiddenText").toggle();
+
+                });
+
+        }).catch(err => {
+          // Do something for an error here
+          console.log("Error Reading data " + err);
+        });
+        </script>
+
+        <div id="heading"></div>
+        <div id="item"></div>
+        
+
+    </body>
+</html>
