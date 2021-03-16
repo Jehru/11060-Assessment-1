@@ -33,21 +33,20 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap');
 
         /* Colour scheme
-        https://coolors.co/d8f3dc-95d5b2-52b788-2d6a4f-081c15-e0607e
+        https://coolors.co/d8f3dc-298561-095d42-081c15-df5979 
             #d8f3dc
-            #95d5b2
-            #52b788
-            #2D6A4F
+            #298561
+            #095D42
             #081C15
-            #E0607E
+            #df5979
          */
 
         /* Sets San serif font for whole page. Serifs are Yuk */
         /* Poppins is a cute rounded font that fits the frogs */
         body {
-        font-family: "Poppins", sans-serif;
+        font-family: 'Poppins' !important;
         font-size: 17px; 
-        background-color: #d8f3dc;
+        background-color: #D8F3DC;
         color: #081C15;
         }
 
@@ -65,6 +64,12 @@
             font-size: 70px;
             font-weight: 700;
             margin-top: 0px;
+            color: #081C15;
+            font-family: 'Poppins';
+        }
+
+        h3 {
+            font-family: 'Poppins' !important;
         }
 
         /* Sets the font size for the body text */
@@ -77,6 +82,7 @@
         .heading1 h1{
             letter-spacing: 4px;
             display: inline;
+            font-family: 'Poppins';
         }
 
         /* The emphasis text, "of" in the heading */
@@ -84,24 +90,30 @@
         .heading1 em{
             font-size: 50px;
             font-weight: 700;
-            color: #E0607E;
+            color: #df5979;
+            font-family: 'Poppins';
         }
 
         /* Sets the "show frogs near me" button styling */
         /* The button styling and text */
         #find-me{
+            font-family: 'Poppins';
             letter-spacing: 2px;
             padding: 25px 55px;
             text-transform: uppercase;
             cursor: pointer;
             margin: 15px 30px;
-            background-color: #95d5b2;
+            background-color: #298561;
             border-radius: 7px;
+            color:#ffffff;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgb(0 0 0 / 20%);
+            
         }
 
         /* Adds an hover effect to the button slightly darker green with 0.4s delay  */
         #find-me:hover{
-            background-color: #2D6A4F;
+            background-color: #095D42;
             -webkit-transition: all 0.4s;
             -moz-transition: all 0.4s;
             transition: all 0.4s;
@@ -213,7 +225,7 @@
                                     // There is hidden information that is shown when the user clicks on the card
                                     $('.uk-grid-medium').append('<div><div class = "uk-card uk-card-default uk-card-body"> <b>' 
                                     + locationData[i].commonName + '</b><br><p>' +  
-                                    '<br>' + 'There are ' + locationData[i].count +' found near you</p> <img src="'+ imgSrc 
+                                    '<br>' + 'There are ' + locationData[i].count +' recordings near you</p> <img src="'+ imgSrc 
                                     +'"> <p class="hiddenText" style="display: none"> Author: '+ speciesInfo.results[0].author + '<br>' +
                                     'Genus: ' + speciesInfo.results[0].genus + '<br>' + 'Name: '+ speciesInfo.results[0].name  +
                                     '<br> Class: '+ speciesInfo.results[0].class +'</p>' +
@@ -280,7 +292,7 @@
                 for(let i = 0; i < defaultFrog.length; i++) {
                     // Append each of these frogs to the webpage
                     // include the name, image and hide the common name 
-                    $('#ifNoItems').append('<div><div class = "uk-card uk-card-default uk-card-body"><b>' + defaultFrog[i].name + '</b>' + '<img src="' + defaultFrog[i].imageUrl 
+                    $('#ifNoItems').append('<div><div class = "uk-card uk-card-default uk-card-body"><b>' + defaultFrog[i].name + '</b><br><br>' + '<img src="' + defaultFrog[i].imageUrl 
                         + '"> <p class="hiddenText" style="display: none"> Common Name: '+ defaultFrog[i].commonNameSingle + '</p></div></div>' )
                 }
             })
