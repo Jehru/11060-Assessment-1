@@ -70,6 +70,8 @@
 
         h3 {
             font-family: 'Poppins' !important;
+            font-weight: 700;
+            font-size: 20px;
         }
 
         /* Sets the font size for the body text */
@@ -178,14 +180,16 @@
 
                 // Get the json data from the Google development Url, which will give us the name of the address of the user 
                 $.getJSON(gDevMapUrl, function(addressData) {
-                    // console.log(addressData);
+                    console.log(addressData);
 
                     // Create a variable for the users current address as formatted (streetname, suburb state postcode, country)
                     let locatedAddress = addressData.results[0].formatted_address;
 
                     // Update the map link class so that it appends the address to the page.
                     $('#map-link').append("<h3> You are located at " + locatedAddress + "</h3>")
-
+                    // 
+                    //AAAAAAAAAAAAAAAAAAAAAAAA Maybe trim the result to not include the streetname (Also a bit creepy)
+                    // 
 
                     // Finding the nearby frogs in the users current location within a 5km radius
                     const locationUrl = "https://biocache-ws.ala.org.au/ws/explore/group/Amphibians.json?lat=" + latitude + "&lon=" + longitude + "&radius=5&start=0&pageSize=200"
@@ -232,8 +236,8 @@
                                     // Main append
                                     // Appends each frog item to the page includes the name, amount of frogs near the user
                                     // There is hidden information that is shown when the user clicks on the card
-                                    $('.uk-grid-medium').append('<div><div class = "uk-card uk-card-default uk-card-body uk-card-hover"> <b>' 
-                                    + locationData[i].commonName + '</b><br><p>' +  
+                                    $('.uk-grid-medium').append('<div><div class = "uk-card uk-card-default uk-card-body uk-card-hover"> <h3>' 
+                                    + locationData[i].commonName + '</h3><p>' +  
                                     '<br>' + 'There have been ' + locationData[i].count +' frog sightings near you</p> <img src="'+ imgSrc 
                                     +'" alt="Image of '+ locationData[i].commonName +'"> <p class="hiddenText" style="display: none"> Author: '
                                     + speciesInfo.results[0].author + '<br>' +
@@ -297,13 +301,13 @@
 
                 // Create a constant that makes indexing the information easer
                 const defaultFrog = data.searchResults.results;
-                console.log(defaultFrog);
+                // console.log(defaultFrog);
 
                 // Create a loop for each of the default loaded frogs
                 for(let i = 0; i < defaultFrog.length; i++) {
                     // Append each of these frogs to the webpage
                     // include the name, image and hide the common name 
-                    $('#ifNoItems').append('<div><div class = "uk-card uk-card-default uk-card-body uk-card-hover"><b>' + defaultFrog[i].name + '</b><br><br>' + '<img src="' + defaultFrog[i].imageUrl 
+                    $('#ifNoItems').append('<div><div class = "uk-card uk-card-default uk-card-body uk-card-hover"><h3>' + defaultFrog[i].name + '</h3  ><br>' + '<img src="' + defaultFrog[i].imageUrl 
                         + '" alt = "Image of '+ defaultFrog[i].commonNameSingle +'"> <p class="hiddenText" style="display: none"> Common Name: '+ defaultFrog[i].commonNameSingle + '</p></div></div>' )
                 }
             })
@@ -351,7 +355,7 @@
     <div class = "uk-grid-medium uk-grid-match uk-child-width-1-3@m uk-text-left uk-padding" uk-grid uk-scrollspy="cls: uk-animation-fade; target: .uk-card; delay: 500;"></div>
 
     <!-- The default frogs that show if the user hasnt clicked the  -->
-    <div id = "ifNoItems" class = "uk-grid-small uk-grid-match uk-child-width-1-3@m uk-text-left uk-padding" uk-grid uk-scrollspy="cls: uk-animation-fade; target: .uk-card; delay: 500;"></div>
+    <div id = "ifNoItems" class = "uk-grid-small uk-grid-match uk-child-width-1-3@m uk-text-left uk-padding uk-grid uk-scrollspy='cls: uk-animation-fade; target: .uk-card; delay: 500;'"></div>
        
 </body>
 </html>
