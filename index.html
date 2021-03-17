@@ -238,7 +238,7 @@
                                     // There is hidden information that is shown when the user clicks on the card
                                     $('.uk-grid-medium').append('<div><div class = "uk-card uk-card-default uk-card-body uk-card-hover"> <h3>' 
                                     + locationData[i].commonName + '</h3><p>' +  
-                                    '<br>' + 'There have been ' + locationData[i].count +' frog sightings near you</p> <img src="'+ imgSrc 
+                                    '<br>' + 'There have been ' + locationData[i].count + ' ' + locationData[i].commonName +' sightings near you</p> <img src="'+ imgSrc 
                                     +'" alt="Image of '+ locationData[i].commonName +'"> <p class="hiddenText" style="display: none"> Author: '
                                     + speciesInfo.results[0].author + '<br>' +
                                     'Genus: ' + speciesInfo.results[0].genus + '<br>' + 'Name: '+ speciesInfo.results[0].name  +
@@ -355,7 +355,7 @@
     <div class = "uk-grid-medium uk-grid-match uk-child-width-1-3@m uk-text-left uk-padding" uk-grid uk-scrollspy="cls: uk-animation-fade; target: .uk-card; delay: 500;"></div>
 
     <!-- The default frogs that show if the user hasnt clicked the  -->
-    <div id = "ifNoItems" class = "uk-grid-small uk-grid-match uk-child-width-1-3@m uk-text-left uk-padding uk-grid uk-scrollspy='cls: uk-animation-fade; target: .uk-card; delay: 500;'"></div>
+    <div id = "ifNoItems" class = "uk-grid-small uk-grid-match uk-child-width-1-3@m uk-text-left uk-padding" uk-grid uk-scrollspy="cls: uk-animation-fade; target: .uk-card; delay: 500;"></div>
        
 </body>
 </html>
