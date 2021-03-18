@@ -142,43 +142,33 @@
 <!-- My Main Script -->
 <script>
 
-    // When DOM and page is ready 
+    // When DOM and page is ready
     $(document).ready(function() {
 
-        // The main function in the code 
+        // The main function in the code
         // Runs when the user clicks the "Show frogs near me" button
-        function geoFindMe() {
+        function whereAmI() {
 
-            // Api Call 
-            // const spatialUrl = "https://biocache-ws.ala.org.au/ws/occurrences/search.json*?q=frog&pageSize=150&im=false ";
-            // console.log("Here");
-            // console.log(spatialUrl);
-
-            // 
-            // 
-            // 
-            const status = document.querySelector('#status');
-            const mapLink = document.querySelector('#map-link');
 
             // If the user successfully allows their location
             function success(position) {
                 // Get users current latitude and longitude
-                // Create constants for those variables 
+                // Create constants for those variables
                 const latitude  = position.coords.latitude;
                 const longitude = position.coords.longitude;
         
-                // 
-                // 
-                // 
-                status.textContent = ''; 
+                // Removes 'Locating' text
+                $('#status').empty();
 
-                // Google Cloud development Key and Reverse Geolocation Api 
+
+                // Google Cloud development Key and Reverse Geolocation Api
                 // This will allow us to get the users current location in street name and address
                 const gDevApiKey = "AIzaSyBXbTrT4c4Fw_n7gAzh1UQ3PrUO8yEyjmQ";
-                const gDevMapUrl = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latitude + "," + longitude +"&key=" + gDevApiKey;
-                // console.log(gDevMapUrl);   
+                const gDevMapUrl = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" +
+                    latitude + "," + longitude +"&key=" + gDevApiKey;
+                // console.log(gDevMapUrl);
 
-                // Get the json data from the Google development Url, which will give us the name of the address of the user 
+                // Get the json data from the Google development Url, which will give us the name of the address of the user
                 $.getJSON(gDevMapUrl, function(addressData) {
                     console.log(addressData);
 
@@ -186,13 +176,13 @@
                     let locatedAddress = addressData.results[0].formatted_address;
 
                     // Update the map link class so that it appends the address to the page.
-                    $('#map-link').append("<h3> You are located at " + locatedAddress + "</h3>")
+                    $('#map-link').append("<h3> You are located at " + locatedAddress + "</h3>");
                     // 
                     //AAAAAAAAAAAAAAAAAAAAAAAA Maybe trim the result to not include the streetname (Also a bit creepy)
                     // 
 
                     // Finding the nearby frogs in the users current location within a 5km radius
-                    const locationUrl = "https://biocache-ws.ala.org.au/ws/explore/group/Amphibians.json?lat=" + latitude + "&lon=" + longitude + "&radius=5&start=0&pageSize=200"
+                    const locationUrl = "https://biocache-ws.ala.org.au/ws/explore/group/Amphibians.json?lat=" + latitude + "&lon=" + longitude + "&radius=5&start=0&pageSize=200";
                     // console.log(locationUrl);
 
                     // Get the json data from the above url which shows the frogs within 5km of the user
@@ -203,7 +193,7 @@
                         for(let i = 0; i <locationData.length; i++) {
                         
                             // Create a constant for the frogs common name
-                            const frogName = locationData[i].commonName 
+                            const frogName = locationData[i].commonName;
 
                             // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI
                             // Query an api that includes information about each specific frog 
@@ -237,13 +227,12 @@
                                     // Appends each frog item to the page includes the name, amount of frogs near the user
                                     // There is hidden information that is shown when the user clicks on the card
                                     $('.uk-grid-medium').append('<div><div class = "uk-card uk-card-default uk-card-body uk-card-hover"> <h3>' 
-                                    + locationData[i].commonName + '</h3><p>' +  
-                                    '<br>' + 'There have been ' + locationData[i].count + ' ' + locationData[i].commonName +' sightings near you</p> <img src="'+ imgSrc 
-                                    +'" alt="Image of '+ locationData[i].commonName +'"> <p class="hiddenText" style="display: none"> Author: '
-                                    + speciesInfo.results[0].author + '<br>' +
-                                    'Genus: ' + speciesInfo.results[0].genus + '<br>' + 'Name: '+ speciesInfo.results[0].name  +
-                                    '<br> Class: '+ speciesInfo.results[0].class +'</p>' +
-                                    '<div class="audio" style="display:none"><audio controls source src="' + soundFileUrl + '" ></audio></div></div></div>' );
+                                    + locationData[i].commonName + '</h3><p> <br>' + 'There have been ' + locationData[i].count 
+                                    + ' ' + locationData[i].commonName +' sightings near you</p> <img src="'+ imgSrc  +'" alt="Image of '+ 
+                                    locationData[i].commonName +'"> <p class="hiddenText" style="display: none"> Author: '+ speciesInfo.results[0].author 
+                                    + '<br> Genus: ' + speciesInfo.results[0].genus + '<br>' + 'Name: '+ speciesInfo.results[0].name  +
+                                    '<br> Class: '+ speciesInfo.results[0].class +'</p>' + '<div class="audio" style="display:none"><audio controls source src="' + 
+                                    soundFileUrl + '" ></audio></div></div></div>' );
                                 
                                     // When no image is found (on an error) then use a broken image image instead of the frog image
                                     // https://stackoverflow.com/questions/56166094/update-img-src-if-image-does-not-exist
@@ -272,16 +261,20 @@
 
             // If an error occurs such as user clicks 'block' for their location then provide a message
             function error() {
-                status.textContent = 'Unable to retrieve your location';
+                $('#status').empty();
+                $('#status').append("Unable to retrieve your location ");
             }
 
             // If navigator is not found then tell the user its not supported
             // Otherwise use navigator to try and get the location of the user
             // If its allowed then run success. If its blocked then run the error
             if(!navigator.geolocation) {
-                status.textContent = 'Navigator geolocation is not supported by your browser, to use this feature try it on Google Chrome';
+                $('#status').empty();
+                $('#status').append("Navigator geolocation is not supported by your browser, to use this feature try it on Google Chrome")
+
             } else {
-                status.textContent = 'Locating…';
+                $('#status').empty();
+                $('#status').append("Locating");
                 navigator.geolocation.getCurrentPosition(success, error);
             }
 
@@ -316,8 +309,8 @@
         // Run the default action
         defaultAction();
 
-        // When the user clicks on the "show frogs near me" button run the geoFindMe function
-        $('#find-me').click(geoFindMe);
+        // When the user clicks on the "show frogs near me" button run the function to find the user
+        $('#find-me').click(whereAmI);
 
         // When user clicks on the class 'uk card' in the body find the hiddenText and audio class and show/hide them
         // https://stackoverflow.com/questions/29372003/click-event-is-not-working-when-data-loads-dynamic-in-jquery
