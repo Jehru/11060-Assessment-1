@@ -27,7 +27,7 @@ Prior to this project I had no previous knowledge of GLAM data and through this 
 The colour palette consists of a monochromatic green and a complimentary pink. 
 
 ![Colour Palette](/assets/rationaleImages/colourPalette.png)
-(Coolors - Colour Palette, n.d.)
+_(Coolors - Colour Palette, n.d.)_
 
 All colours were tweaked colorsharks contrast tool. This tool gives advice to making your text and background colours WCAG 2.1 compatible. (Riggan, n.d.)
 These colours were chosen with green as the primary colour as frogs are frog stereotypes are green, however at the end of the project I noticed that frogs near Canberra are usually more brown/grey in colour. The complimentary pink was chosen to contrast and stand out against the green. 
@@ -44,13 +44,13 @@ The best 3 examples are shown here, more examples can be seen in the Appendix B.
 I was inspired by the Apples at the Met, Ceramic Beats and Buddhas at the Met sites. All these websites are student projects and inspired me to build an interactive and engaging website.  
 
 ![Apples of the Met](/assets/rationaleImages/applesOfMet.png)
-(Apples of the Met, n.d.)))
+_(Apples of the Met, n.d.)_
 
 ![Buddhas of the Met](/assets/rationaleImages/buddhasAtMet.png)
-(Ceramic Beats, n.d.)
+_(Ceramic Beats, n.d.)_
 
 ![Ceramic Beats](/assets/rationaleImages/ceramicBeats.png)
-(Ran, n.d.)
+_(Ran, n.d.)_
 
 
 ## References
