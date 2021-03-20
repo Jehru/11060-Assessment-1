@@ -2,10 +2,7 @@
 
 ### Github Pages Url:
 https://jehru.github.io/11060-Assessment-1/
-\
-&nbsp;
-\
-&nbsp;
+
 ## Reflection on development process
 
 The full development process can be found in the Appendix A.  
