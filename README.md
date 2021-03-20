@@ -171,9 +171,7 @@ And others from:
 (Suzuki, n.d.)
 ("MetKids", n.d.)
 ("Cool stuff made with cultural heritage APIs", 2018)
-\
-\
-\
+
 
 ### References for Appendixes 
 
