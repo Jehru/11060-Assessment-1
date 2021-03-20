@@ -223,12 +223,12 @@
                                     // Appends each frog item to the page includes the name, amount of frogs near the user
                                     // There is hidden information that is shown when the user clicks on the card
                                     $('.uk-grid-medium').append('<div><div class = "uk-card uk-card-default uk-card-body uk-card-hover"> <h3>' 
-                                    + locationData[i].commonName + '</h3><p> <br>' + 'There have been ' + locationData[i].count 
-                                    + ' ' + locationData[i].commonName +' sightings near you</p> <img src="'+ imgSrc  +'" alt="Image of '+ 
-                                    locationData[i].commonName +'"> <p class="hiddenText" style="display: none"> Author: '+ speciesInfo.results[0].author 
-                                    + '<br> Genus: ' + speciesInfo.results[0].genus + '<br>' + 'Name: '+ speciesInfo.results[0].name  +
-                                    '<br> Class: '+ speciesInfo.results[0].class +'</p>' + '<div class="audio" style="display:none"><audio controls source src="' + 
-                                    soundFileUrl + '" ></audio></div></div></div>' );
+                                        + locationData[i].commonName + '</h3><p> <br>' + 'There have been ' + locationData[i].count 
+                                        + ' ' + locationData[i].commonName +' sightings near you</p> <img src="'+ imgSrc  +'" alt="Image of '+ 
+                                        locationData[i].commonName +'"> <p class="hiddenText" style="display: none"> Author: '+ speciesInfo.results[0].author 
+                                        + '<br> Genus: ' + speciesInfo.results[0].genus + '<br>' + 'Name: '+ speciesInfo.results[0].name  +
+                                        '<br> Class: '+ speciesInfo.results[0].class +'</p>' + '<div class="audio" style="display:none"><audio controls source src="' + 
+                                        soundFileUrl + '" ></audio></div></div></div>' );
                                 
                                     // When no image is found (on an error) then use a broken image image instead of the frog image
                                     // https://stackoverflow.com/questions/56166094/update-img-src-if-image-does-not-exist
