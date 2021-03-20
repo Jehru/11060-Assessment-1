@@ -82,9 +82,11 @@ To make the site more relevant to the user I decided to load information that is
 One problem I encountered was how was I going to display all the results. To solve this, I found a stack overflow article which used a for loop for each item in an array/object, I used this to append the name and image to the page ("For loop through array and group every x number of items", 2014). I then researched into how to display the content in a grid so that multiple items could be viewed on one line and reduce the scrolling required. I followed a W3Schools responsive grid tutorial which used a flexbox style method of creating a 3-column grid which could be resized.  ("How To Create a Responsive Image Grid", n.d.)
 
 At this stage I wanted to display more information if the user clicks on an item. I initially used the jQuery .click() event but I found that this would make all the items in the grid trigger at once. I needed a way for the site to know which item I was clicking and only display that items information. After researching various ways of using the .click() event I found a Stack Overflow post about clicking on an item and loading in dynamic data ("Click Event is not Working When Data loads Dynamic in jquery", 2018). In this post I found a solution that used the .on(‘click’) event which in my code looked like this:
+```
 $('body').on('click','{div name}' ,function() { 
-	// My code in here
+    // My code in here
 } 
+```
 I found that this worked when using “$(this).css()” to change the background colour it worked well. To show and hide text I applied a new class name called ‘hiddenText’ and the ‘display:none;’ property to hide it from view. I used the .find() method which allowed me to target the hidden text class and use the .toggle() method to change the visibility of the text. (".find() | jQuery API Documentation", n.d.) (".toggle() | jQuery API Documentation", n.d.)
 
 During an in-class tutorial the tutor demonstrated the use of jQuery’s ‘getJson’ function to perform http GET requests to retrieve JSON data. Initially I was not going to transfer my code from the current fetch request that I was using. However, I was having issues related to images not loading consistently and I tested the code on the getJson I discovered that it retrieved the images more reliably. 
