@@ -107,20 +107,26 @@ To add a personalised result to the page I wanted to add a button which would sh
 Initially I attempted to match the location of the user with the frogs recorded location then filtering it state however this resulted in only showing the first result ‘brown striped frog’. I realised that this was caused by how my program was formatted. I adjusted my code so that it used nested ‘.getJson’ requests which to fix the issue that variables were not declared in the main geolocation function.  
 As I looked into the data of the URL “https://biocachews.ala.org.au/ws/occurrences/spatial*?q=frogs&pageSize=10”, I realised that it didn’t provide any results on frogs but returned results on birds. 
 
-I then researched for a new API URL that would find information about frogs near the user’s latitude and longitude. I explored the biocache swagger documentation and ALA’s own web service API documentation however I could not find the API call that I needed ("Web service API", n.d.) ("biocache-service API", n.d.). I uncovered my API URL that I needed in the documenter.getpostman documentation which provided a URL which provided animal species near the user. I implemented this with the navigator.geolocation API’s latitude and longitude and changed the species to amphibians. ("ALA API's for GovHack 2020", 2020)
+I then researched for a new API URL that would find information about frogs near the user’s latitude and longitude. I explored the biocache swagger documentation and ALA’s own web service API documentation however I could not find the API call that I needed ("Web service API", n.d.) ("biocache-service API", n.d.). I uncovered my API URL that I needed in the documenter.getpostman documentation which provided a URL which provided animal species near the user. I implemented this with the navigator.geolocation API’s latitude and longitude and changed the species to amphibians. ("ALA API's for GovHack 2020", 2020)    
+
+
+** TESTING HERE **
 
 
 In the week 5 tutorial I was prompted to explore frog sounds and playing the sounds when the user clicks on the frog item. I began by checking if freesound.org had frog croaking’s as I already knew they had an API ("Resources — Freesound API documentation", n.d.). I found that the freesound API could only provide sound files for a limited selection of frogs. I decided that it would be more effective to download the frog audio files and load them in similar to Mitchl’s Drifter website which plays frog croaks along the Murrumbidgee river (Whitelaw, 2016).
 
 When I was downloading the audio files from Amphibiaweb I noticed that the URL’s ended with “/family_names.wav”. I realised that instead of downloading the audio files I could link to these absolute URL’s instead (AmphibiaWeb, 2021.). An example of the Litoria Lesueurii’s audio file: 
-“[https://amphibiaweb.org/sounds/Litoria_lesueurii.wav](https://amphibiaweb.org/sounds/Litoria_lesueurii.wav)”
+“[https://amphibiaweb.org/sounds/Litoria_lesueurii.wav](https://amphibiaweb.org/sounds/Litoria_lesueurii.wav)”  
 
 
 While researching how to change a space to an underscore in a title such as ‘litoria lesueurii’ to ‘litoria_lesueurii’ I looked in the JSON data for the best value to use and I spotted a property called ‘linkIdentifier’ which already had an underscore as a result I implemented this. 
 I was unable to get the sounds play on the users click as the click function is outside of the scope of where the audio file is appended to the page. I attempted to implement using the audio play() method, $(‘audio’).play() and adding event listeners ("Play an audio file using jQuery when a button is clicked", 2011) ("HTML DOM Audio play() Method", n.d.). I was unable to solve this problem and used the html audio controls which allow the user to control the audio. 
 
+
 To make my site mobile compatible I researched various CSS frameworks such as Foundation, Semantic UI and UIkit. I was unable to use a framework similar to Bootstrap which requires there to be a ‘container’, ‘row’ and ‘column’ as my program used the same class name for every item added to the page. I found that UIkit used a flexbox-styled layout similar to the current grid I was using and would allow me to keep the same class names for each item (Lazaris, 2019).
+
 I used the card style layout as it would give a similar browsing experience on a mobile or desktop. I had to tweak the cards by adding class names such as ‘uk-grid-match’ which matches all the cards to the same height. While understanding how the framework works, I noticed there was animation effects such as ‘ScrollSpy’ which fades in the cards as the user scrolls down, which I implemented in my website. ("UIkit - Card", n.d.)
+
 
 I finished the assignment by tweaking the hover effects on the cards to make it more obvious for the user that they are clickable. I also adjusted the copy around the number of sightings which have been recorded so that it was easier to understand.  ("Explore Your Area | Atlas of Living Australia", n.d.). I uploaded the final code to be viewed on GitHub Pages.
 
