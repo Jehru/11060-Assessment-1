@@ -149,8 +149,9 @@ I used the card style layout as it would give a similar browsing experience on a
 \
 \
 I finished the assignment by tweaking the hover effects on the cards to make it more obvious for the user that they are clickable. I also adjusted the copy around the number of sightings which have been recorded so that it was easier to understand.  ("Explore Your Area | Atlas of Living Australia", n.d.). I uploaded the final code to be viewed on GitHub Pages.
-
-
+\
+\
+\
 ### Appendix B
 #### Other Examples
 
