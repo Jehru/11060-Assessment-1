@@ -72,14 +72,20 @@ Whitelaw, M. (2010). TEDxCanberrra - Mitchell Whitelaw - Visualising culture [Vi
 #### Full Process
 
 I started this project by researching the basics of jQuery and how to use API URL’s. I watched the jQuery Essential Training video (Marini, 2016) and another course, Intro to jQuery on Udacity (Intro into jQuery, n.d.). I completed the GitHub profile API tutorial (Rocheleau, 2013) and found it very helpful in understanding how to query and retrieve information from an API.  
+
 I created my website by following a tutorial that used the OpenWeather API however as our class content changed to GLAM API’s I researched the Trove API, and I was able to transfer my previous code to the Trove API by changing a few lines of code. (Vieira, 2020)
+
 By using various array and object methods to target the values I realised how to print out the results to the console, then to the page. For example ‘console.log(data.results);’ would print the amount of items that was found in that API call.
+
 At this stage I realised that the Trove API had no images, I then decided to find a different API. I decided that images were necessary to make the site visually engaging. There are other ways to represent data visually such as using circles or squares however I felt that this was too complex within the timeframe of the assessment. After researching other API’s such as the National Museum of Australia I found that the Atlas of Living Australia (ALA) had image URLs in their API. 
+
 In my research I found that the Parsons School of Design have done interesting and engaging work with the Met museum. I was inspired by most of these projects. ("Parsons MS Data Visualization | The Met Museum | 2019", 2019)
 
 To make the site more relevant to the user I decided to load information that is based on their current location. The ALA has about 94, 789, 163 occurrence records and 9, 024 datasets ("Home - Atlas of Living Australia", n.d.)  therefore I chose to pick a specific plant or animal species to show in my website. I accidently found a result about Australia’s frogs when using their website which inspired me to use frogs as a theme. ("Home - Atlas of Living Australia", n.d.) ("ALA API - how to access ALA web services", 2018)
 
+
 One problem I encountered was how was I going to display all the results. To solve this, I found a stack overflow article which used a for loop for each item in an array/object, I used this to append the name and image to the page ("For loop through array and group every x number of items", 2014). I then researched into how to display the content in a grid so that multiple items could be viewed on one line and reduce the scrolling required. I followed a W3Schools responsive grid tutorial which used a flexbox style method of creating a 3-column grid which could be resized.  ("How To Create a Responsive Image Grid", n.d.)
+
 
 At this stage I wanted to display more information if the user clicks on an item. I initially used the jQuery .click() event but I found that this would make all the items in the grid trigger at once. I needed a way for the site to know which item I was clicking and only display that items information. After researching various ways of using the .click() event I found a Stack Overflow post about clicking on an item and loading in dynamic data ("Click Event is not Working When Data loads Dynamic in jquery", 2018). In this post I found a solution that used the .on(‘click’) event which in my code looked like this:
 ```
@@ -89,19 +95,25 @@ $('body').on('click','{div name}' ,function() {
 ```
 I found that this worked when using “$(this).css()” to change the background colour it worked well. To show and hide text I applied a new class name called ‘hiddenText’ and the ‘display:none;’ property to hide it from view. I used the .find() method which allowed me to target the hidden text class and use the .toggle() method to change the visibility of the text. (".find() | jQuery API Documentation", n.d.) (".toggle() | jQuery API Documentation", n.d.)
 
+
 During an in-class tutorial the tutor demonstrated the use of jQuery’s ‘getJson’ function to perform http GET requests to retrieve JSON data. Initially I was not going to transfer my code from the current fetch request that I was using. However, I was having issues related to images not loading consistently and I tested the code on the getJson I discovered that it retrieved the images more reliably. 
+
 
 One issue I had was displaying placeholder or broken images. At first I used the ‘onerror = function()’ attribute to the image to solve the issue however I noticed that it didn’t work. After researching my issue further, I discovered a Stack Overflow post about how to use a placeholder image if the existing URL is not found (McCrossan, 2019). My solution targeted the image item and used an ‘.on(error)’ event to change the image source to a placeholder image. 
 
+
 To add a personalised result to the page I wanted to add a button which would show frogs near the user. I used Google clouds reverse geocoding API and the navigator.geolocation API to get the users current location and address. ("Example of reverse geocoding", n.d.)
+
 Initially I attempted to match the location of the user with the frogs recorded location then filtering it state however this resulted in only showing the first result ‘brown striped frog’. I realised that this was caused by how my program was formatted. I adjusted my code so that it used nested ‘.getJson’ requests which to fix the issue that variables were not declared in the main geolocation function.  
 As I looked into the data of the URL “https://biocachews.ala.org.au/ws/occurrences/spatial*?q=frogs&pageSize=10”, I realised that it didn’t provide any results on frogs but returned results on birds. 
 
 I then researched for a new API URL that would find information about frogs near the user’s latitude and longitude. I explored the biocache swagger documentation and ALA’s own web service API documentation however I could not find the API call that I needed ("Web service API", n.d.) ("biocache-service API", n.d.). I uncovered my API URL that I needed in the documenter.getpostman documentation which provided a URL which provided animal species near the user. I implemented this with the navigator.geolocation API’s latitude and longitude and changed the species to amphibians. ("ALA API's for GovHack 2020", 2020)
 
+
 In the week 5 tutorial I was prompted to explore frog sounds and playing the sounds when the user clicks on the frog item. I began by checking if freesound.org had frog croaking’s as I already knew they had an API ("Resources — Freesound API documentation", n.d.). I found that the freesound API could only provide sound files for a limited selection of frogs. I decided that it would be more effective to download the frog audio files and load them in similar to Mitchl’s Drifter website which plays frog croaks along the Murrumbidgee river (Whitelaw, 2016).
+
 When I was downloading the audio files from Amphibiaweb I noticed that the URL’s ended with “/family_names.wav”. I realised that instead of downloading the audio files I could link to these absolute URL’s instead (AmphibiaWeb, 2021.). An example of the Litoria Lesueurii’s audio file: 
-“https://amphibiaweb.org/sounds/Litoria_lesueurii.wav”
+“[https://amphibiaweb.org/sounds/Litoria_lesueurii.wav](https://amphibiaweb.org/sounds/Litoria_lesueurii.wav)”
 
 
 While researching how to change a space to an underscore in a title such as ‘litoria lesueurii’ to ‘litoria_lesueurii’ I looked in the JSON data for the best value to use and I spotted a property called ‘linkIdentifier’ which already had an underscore as a result I implemented this. 
