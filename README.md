@@ -152,6 +152,7 @@ I finished the assignment by tweaking the hover effects on the cards to make it 
 \
 \
 \
+
 ### Appendix B
 #### Other Examples
 
@@ -173,6 +174,7 @@ And others from:
 \
 \
 \
+
 ### References for Appendixes 
 
 .find() | jQuery API Documentation. Retrieved 20 March 2021, from https://api.jquery.com/find/
