@@ -1,11 +1,10 @@
-# 11060 – Assessment 1 API Sketch
-# Jehru Harris / U3202988
+# 11060 – Assessment 1 API Sketch (Jehru Harris / U3202988)
 
 ### Github Pages Url:
 https://jehru.github.io/11060-Assessment-1/
 
 
-### Reflection on development process
+## Reflection on development process
 
 The full development process can be found in the Appendix A.  
 
@@ -23,7 +22,7 @@ One of the main takeaways from this project was the importance of locating the r
 Prior to this project I had no previous knowledge of GLAM data and through this project I am now interested in taking GLAM data which traditionally (especially younger audiences) viewers may find uninteresting or disengaging and redesigning it to be explored with in a new and interesting way. 
 
 
-### Design decisions 
+## Design decisions 
 
 The colour palette consists of a monochromatic green and a complimentary pink. 
 
@@ -39,7 +38,7 @@ The typeface chosen is Poppins, which was chosen due to its round friendly look.
 I used a card style interface to show the frog images and information. This was implemented as it would provide a similar experience when using the site on the desktop or mobile. I was originally going to hide all the information behind the image and only show when the user clicks on it but felt that it was necessary to provide some information. 
 
 
-### Examples of other relevant interfaces
+## Examples of other relevant interfaces
 
 The best 3 examples are shown here, more examples can be seen in the Appendix B.
 I was inspired by the Apples at the Met, Ceramic Beats and Buddhas at the Met sites. All these websites are student projects and inspired me to build an interactive and engaging website.  
@@ -54,7 +53,7 @@ I was inspired by the Apples at the Met, Ceramic Beats and Buddhas at the Met si
 (Ran, n.d.)
 
 
-### References
+## References
 
 Apples of the Met. [Image]. Retrieved from https://xingwei726.github.io/Major-Studio-1/Week10_InteractiveProject/test8/#page-1
 
@@ -69,7 +68,7 @@ Riggan, M. ColorShark – WCAG 2.1 AA and AAA Color Contrast Tool. Retrieved 19 
 Whitelaw, M. (2010). TEDxCanberrra - Mitchell Whitelaw - Visualising culture [Video]. Retrieved from https://www.youtube.com/watch?v=i8JO0KkYvow
 
 
-### Appendix A
+## Appendix A
 #### Full Process
 
 I started this project by researching the basics of jQuery and how to use API URL’s. I watched the jQuery Essential Training video (Marini, 2016) and another course, Intro to jQuery on Udacity (Intro into jQuery, n.d.). I completed the GitHub profile API tutorial (Rocheleau, 2013) and found it very helpful in understanding how to query and retrieve information from an API.  
