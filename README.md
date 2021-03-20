@@ -28,7 +28,6 @@ Prior to this project I had no previous knowledge of GLAM data and through this 
 The colour palette consists of a monochromatic green and a complimentary pink. 
 
 ![Colour Palette](/assets/rationaleImages/colourPalette.png)
-Format: ![Colour Palette for design, consisting of #d8f3dc, #298561, #095D42, #081C15, #df5979 ]
 (Coolors - Colour Palette, n.d.)
 
 All colours were tweaked colorsharks contrast tool. This tool gives advice to making your text and background colours WCAG 2.1 compatible. (Riggan, n.d.)
@@ -45,26 +44,28 @@ I used a card style interface to show the frog images and information. This was 
 The best 3 examples are shown here, more examples can be seen in the Appendix B.
 I was inspired by the Apples at the Met, Ceramic Beats and Buddhas at the Met sites. All these websites are student projects and inspired me to build an interactive and engaging website.  
 
-![Colour Palette](/assets/rationaleImages/applesOfMet.png)
-Format: ![Colour Palette for design, consisting of #d8f3dc, #298561, #095D42, #081C15, #df5979 ]
+![Apples of the Met](/assets/rationaleImages/applesOfMet.png)
 (Apples of the Met, n.d.)))
 
-![Colour Palette](/assets/rationaleImages/buddhasAtMet.png)
-Format: ![Colour Palette for design, consisting of #d8f3dc, #298561, #095D42, #081C15, #df5979 ]
+![Buddhas of the Met](/assets/rationaleImages/buddhasAtMet.png)
 (Ceramic Beats, n.d.)
 
-![Colour Palette](/assets/rationaleImages/ceramicBeats.png)
-Format: ![Colour Palette for design, consisting of #d8f3dc, #298561, #095D42, #081C15, #df5979 ]
+![Ceramic Beats](/assets/rationaleImages/ceramicBeats.png)
 (Ran, n.d.)
 
 
 ### References
 
 Apples of the Met. [Image]. Retrieved from https://xingwei726.github.io/Major-Studio-1/Week10_InteractiveProject/test8/#page-1
+
 Ceramic Beats. [Image]. Retrieved from https://azuic.github.io/CeramicBeats/
+
 Coolors - Colour Palette. [Image]. Retrieved from https://coolors.co/d8f3dc-298561-074a35-081c15-df5979
+
 Ran, D. Buddhas at the Met [Image]. Retrieved from https://shuvitran.github.io/MajorStudio1/Project2-qualitative/FrontEnd/
+
 Riggan, M. ColorShark – WCAG 2.1 AA and AAA Color Contrast Tool. Retrieved 19 March 2021, from https://colorshark.io/
+
 Whitelaw, M. (2010). TEDxCanberrra - Mitchell Whitelaw - Visualising culture [Video]. Retrieved from https://www.youtube.com/watch?v=i8JO0KkYvow
 
 
@@ -133,38 +134,73 @@ And others from:
 ### References for Appendixes 
 
 .find() | jQuery API Documentation. Retrieved 20 March 2021, from https://api.jquery.com/find/
+
 .toggle() | jQuery API Documentation. Retrieved 20 March 2021, from https://api.jquery.com/toggle/
+
 ALA API - how to access ALA web services. (2018). Retrieved 19 March 2021, from https://support.ala.org.au/support/solutions/articles/6000196777-ala-api-how-to-access-ala-web-services
+
 ALA API's for GovHack 2020. (2020). Retrieved 19 March 2021, from https://documenter.getpostman.com/view/12189774/T1Dwbtbd?version=latest#cd09fb97-05ce-480e-b47f-4b3c35417300
+
 Apple of My Eyes. Retrieved 19 March 2021, from https://xingwei726.github.io/Major-Studio-1/Week10_InteractiveProject/test8/#page-1
+
 AmphibiaWeb. 2021. Retrieved 20 March 2021, from https://amphibiaweb.org/lists/sound.shtml  University of California, Berkeley, CA, USA. 
+
 biocache-service API. Retrieved 20 March 2021, from https://biocache.ala.org.au/ws/swagger-ui.html#/
+
 CeramicBeats. Retrieved 19 March 2021, from https://azuic.github.io/CeramicBeats/
+
 Click Event is not Working When Data loads Dynamic in jquery. (2018). Retrieved 20 March 2021, from https://stackoverflow.com/questions/29372003/click-event-is-not-working-when-data-loads-dynamic-in-jquery
+
 Codex Atlanticus. Retrieved 19 March 2021, from https://www.codex-atlanticus.it/#/Overview
+
 Cool stuff made with cultural heritage APIs. (2018). Retrieved 19 March 2021, from http://museum-API.pbworks.com/w/page/21933412/Cool%20stuff%20made%20with%20cultural%20heritage%20APIs
+
 Example of reverse geocoding. Retrieved 19 March 2021, from https://developers.google.com/maps/documentation/geocoding/overview?csw=1#reverse-example
+
 Explore Your Area | Atlas of Living Australia. Retrieved 19 March 2021, from https://biocache.ala.org.au/explore/your-area#-35.4540|149.0925|12|Amphibians
+
 For loop through array and group every x number of items. (2014). Retrieved 19 March 2021, from https://www.sitepoint.com/community/t/for-loop-through-array-and-group-every-x-number-of-items/97966/2
+
 Home -Atlas of Living Australia. Retrieved 20 March 2021, from https://www.ala.org.au/
+
 How To Create a Responsive Image Grid. Retrieved 19 March 2021, from https://www.w3schools.com/howto/howto_css_image_grid_responsive.asp
+
 HTML DOM Audio play() Method. Retrieved 20 March 2021, from https://www.w3schools.com/jsref/met_audio_play.asp
+
 Intro into jQuery. [Image]. Retrieved from https://classroom.udacity.com/courses/ud245
+
 Lazaris, L. (2019). 10 best CSS frameworks in 2020. Retrieved 19 March 2021, from https://www.creativebloq.com/features/best-css-frameworks
+
 Marini, J. (2016). jQuery Essential Training [Video]. Retrieved from https://www.linkedin.com/learning/jquery-essential-training-2/welcome?u=2330002
+
 McCrossan, R. (2019). Update img src if image does not exist. Retrieved 19 March 2021, from https://stackoverflow.com/questions/56166094/update-img-src-if-image-does-not-exist
+
 MetKids. Retrieved 19 March 2021, from https://www.metmuseum.org/art/online-features/metkids/time-machine
+
 Parsons MS Data Visualization | The Met Museum | 2019. (2019). Retrieved 19 March 2021, from https://parsons.nyc/met-museum-2019/
+
 Pictoline - Timeline. Retrieved 19 March 2021, from https://www.pictoline.com/timeline
+
 Play an audio file using jQuery when a button is clicked. (2018). Retrieved 20 March 2021, from https://stackoverflow.com/questions/8489710/play-an-audio-file-using-jquery-when-a-button-is-clicked
+
 Ran, D. Buddhas at the Met. Retrieved 19 March 2021, from https://shuvitran.github.io/MajorStudio1/Project2-qualitative/FrontEnd/
+
 Resources — Freesound API documentation. Retrieved 19 March 2021, from https://freesound.org/docs/api/resources_apiv2.html#sound-sound
+
 Rocheleau, J. (2013). Code a Simple Github API Webapp using jQuery & Ajax. Retrieved 19 March 2021, from https://blog.teamtreehouse.com/code-a-simple-github-api-webapp-using-jquery-ajax
+
 Spotify: Listening Together. Retrieved 19 March 2021, from https://listeningtogether.atspotify.com/
+
 Suzuki, Y. Sound Of The Earth: The Pandemic Chapter. Retrieved 19 March 2021, from https://globalsound.dma.org/
+
 UIkit - Card. Retrieved 19 March 2021, from https://getuikit.com/docs/card
+
 Vieira, S. (2020). How To Use the JavaScript Fetch API to Get Data. Retrieved 19 March 2021, from https://www.digitalocean.com/community/tutorials/how-to-use-the-javascript-fetch-API-to-get-data
+
 Web service API. Retrieved 19 March 2021, from https://api.ala.org.au/#
+
 Weir, A., & Wong, R. The Museum of the World. Retrieved 19 March 2021, from https://britishmuseum.withgoogle.com/
-Whitelaw, M. (2016). Drifter. Retrieved 19 March 2021, from https://mtchl.net/drifter/map.html site
+
+Whitelaw, M. (2016). Drifter. Retrieved 19 March 2021, from https://mtchl.net/drifter/map.html 
+
 Yesterday, Today, Tomorrow. Retrieved 19 March 2021, from https://yesterday.nfb.ca/
