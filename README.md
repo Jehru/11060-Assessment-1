@@ -171,8 +171,10 @@ And others from:
 (Suzuki, n.d.)
 ("MetKids", n.d.)
 ("Cool stuff made with cultural heritage APIs", 2018)
-
-
+\
+&nbsp;
+\
+&nbsp;
 ### References for Appendixes 
 
 .find() | jQuery API Documentation. Retrieved 20 March 2021, from https://api.jquery.com/find/
