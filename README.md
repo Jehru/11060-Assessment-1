@@ -22,6 +22,7 @@ One other issue that I encountered was that every item that was appended to the 
 One of the main takeaways from this project was the importance of locating the right API for the project and that a well-documented API makes the development easier. I also learnt how to use jQuery to add and remove html items from a page. 
 Prior to this project I had no previous knowledge of GLAM data and through this project I am now interested in taking GLAM data which traditionally (especially younger audiences) viewers may find uninteresting or disengaging and redesigning it to be explored with in a new and interesting way. 
 
+
 ### Design decisions 
 
 The colour palette consists of a monochromatic green and a complimentary pink. 
@@ -38,7 +39,12 @@ The main function of the webpage is to display frogs that have been reported geo
 The typeface chosen is Poppins, which was chosen due to its round friendly look. Poppins is an easy-to-read sans serif geometric typeface that gives the site a modern look. I wanted a friendly looking typeface to compliment the frogs that I was showcasing.  
 I used a card style interface to show the frog images and information. This was implemented as it would provide a similar experience when using the site on the desktop or mobile. I was originally going to hide all the information behind the image and only show when the user clicks on it but felt that it was necessary to provide some information. 
 
+
 ### Examples of other relevant interfaces
 
 The best 3 examples are shown here, more examples can be seen in the Appendix B.
 I was inspired by the Apples at the Met, Ceramic Beats and Buddhas at the Met sites. All these websites are student projects and inspired me to build an interactive and engaging website.  
+
+![Colour Palette](/assets/rationaleImages/colourPalette.png)
+Format: ![Colour Palette for design, consisting of #d8f3dc, #298561, #095D42, #081C15, #df5979 ]
+(Coolors - Colour Palette, n.d.)
