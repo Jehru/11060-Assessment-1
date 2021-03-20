@@ -110,8 +110,7 @@ As I looked into the data of the URL “https://biocachews.ala.org.au/ws/occurre
 I then researched for a new API URL that would find information about frogs near the user’s latitude and longitude. I explored the biocache swagger documentation and ALA’s own web service API documentation however I could not find the API call that I needed ("Web service API", n.d.) ("biocache-service API", n.d.). I uncovered my API URL that I needed in the documenter.getpostman documentation which provided a URL which provided animal species near the user. I implemented this with the navigator.geolocation API’s latitude and longitude and changed the species to amphibians. ("ALA API's for GovHack 2020", 2020)
 \
 \
-
-
+\
 In the week 5 tutorial I was prompted to explore frog sounds and playing the sounds when the user clicks on the frog item. I began by checking if freesound.org had frog croaking’s as I already knew they had an API ("Resources — Freesound API documentation", n.d.). I found that the freesound API could only provide sound files for a limited selection of frogs. I decided that it would be more effective to download the frog audio files and load them in similar to Mitchl’s Drifter website which plays frog croaks along the Murrumbidgee river (Whitelaw, 2016).
 
 When I was downloading the audio files from Amphibiaweb I noticed that the URL’s ended with “/family_names.wav”. I realised that instead of downloading the audio files I could link to these absolute URL’s instead (AmphibiaWeb, 2021.). An example of the Litoria Lesueurii’s audio file: 
